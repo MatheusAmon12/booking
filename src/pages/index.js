@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material"
+import { Typography } from "@mui/material"
 import { makeStyles } from "tss-react/mui"
 
 import TemplaDefault from "@/templates/Default"
