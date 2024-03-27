@@ -23,7 +23,7 @@ const useStyles = makeStyles()((theme) => {
     },
     main: {
         marginLeft: "350px",
-        padding: '160px 0 0 24px'
+        padding: '160px 0 160px 24px'
     },
     textWhite: {
         color: "#FFF"
