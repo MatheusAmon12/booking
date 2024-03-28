@@ -20,15 +20,13 @@ import { Formik } from "formik"
 import Link from "next/link"
 
 import { initialValues, validationSchema } from "./formValues"
+import TemplateAuth from "@/templates/Auth"
 
 const useStyles = makeStyles()((theme) => {
     return{
         container: {
             height: "100vh",
             position: "relative",
-
-            background: "url(/images/backgroundLogin.webp) center center",
-            backgroundSize: "cover"
         },
         box: {
             position: "absolute",
@@ -81,141 +79,133 @@ const Signin = () => {
     }
 
     return(
-        <Container disableGutters maxWidth={"100vw"} className={classes.container}>
-            <Box className={classes.box}>
-                <Typography
-                    component={"h2"}
-                    variant="h2"
-                    color={"primary"}
-                    textAlign={"center"}
-                    className={classes.margin__bottom__40}
-                >
-                    Login
-                </Typography>
-                <Formik
-                    initialValues={initialValues}
-                    validationSchema={validationSchema}
-                >
-                    {
-                        ({
-                            touched,
-                            values,
-                            errors,
-                            handleChange,
-                            handleSubmit,
-                        }) => {
-                            return(
-                                <form onSubmit={handleSubmit} className={classes.form}>
-                                    <FormControl
-                                        fullWidth 
-                                        variant="outlined" 
-                                        error={errors.email && touched.email}
-                                        className={classes.margin__bottom__40}
-                                    >
-                                        <InputLabel>
-                                            E-mail
-                                        </InputLabel>
-
-                                        <Input
-                                            name="email"
-                                            value={values.email}
-                                            onChange={handleChange}
-                                            endAdornment={
-                                                <InputAdornment position="end">
-                                                    <Email />
-                                                </InputAdornment>
-                                            }
-                                        />
-
-                                        <FormHelperText>
-                                            { errors.email && touched.email ? errors.email : null }
-                                        </FormHelperText>
-                                    </FormControl>
-
-                                    <FormControl 
-                                        fullWidth 
-                                        variant="outlined" 
-                                        error={errors.password && touched.password}
-                                        className={classes.margin__bottom__16}
-                                    >
-                                        <InputLabel>
-                                            Senha
-                                        </InputLabel>
-
-                                        <Input
-                                            name="password"
-                                            value={values.password}
-                                            type={ showPassword ? "text" : "password" }
-                                            onChange={handleChange}
-                                            endAdornment={
-                                                <InputAdornment position="end">
-                                                    <IconButton
-                                                        onClick={handleClickShowPassword}
-                                                        edge="end"
-                                                    >
-                                                        {
-                                                            showPassword 
-                                                                ? <Visibility />
-                                                                : <VisibilityOff />
-                                                        }
-                                                    </IconButton>
-                                                </InputAdornment>
-                                            }
-                                        />
-
-                                        <FormHelperText>
-                                            { errors.password && touched.password ? errors.password : null }
-                                        </FormHelperText>
-                                    </FormControl>
-
-                                    <Link 
-                                        href={"#"} 
-                                        className={
-                                            `${classes.form__link} ${classes.margin__bottom__40} ${classes.form__leftItem}`
-                                        }
-                                    >
-                                        <span>Esqueci minha senha</span>
-                                    </Link>  
-
-                                    <Button 
-                                        type="submit" 
-                                        variant="contained" 
-                                        color="primary" 
-                                        fullWidth 
-                                        className={classes.margin__bottom__16}
-                                    >
-                                        entrar
-                                    </Button>
-
-                                    <span className={classes.margin__bottom__16}>
-                                        OU
-                                    </span>
-
-                                    <IconButton 
-                                        disableRipple 
-                                        className={classes.margin__bottom__8}
-                                    >
-                                        <img src="/images/google.svg"/>
-                                        <span 
-                                            style={{marginLeft: "16px", color: "#02385A"}}
+        <TemplateAuth>
+            <Container disableGutters maxWidth={"100vw"} className={classes.container}>
+                <Box className={classes.box}>
+                    <Typography
+                        component={"h2"}
+                        variant="h2"
+                        color={"primary"}
+                        textAlign={"center"}
+                        className={classes.margin__bottom__40}
+                    >
+                        Login
+                    </Typography>
+                    <Formik
+                        initialValues={initialValues}
+                        validationSchema={validationSchema}
+                    >
+                        {
+                            ({
+                                touched,
+                                values,
+                                errors,
+                                handleChange,
+                                handleSubmit,
+                            }) => {
+                                return(
+                                    <form onSubmit={handleSubmit} className={classes.form}>
+                                        <FormControl
+                                            fullWidth
+                                            variant="outlined"
+                                            error={errors.email && touched.email}
+                                            className={classes.margin__bottom__40}
                                         >
-                                            Entre com o Google
-                                        </span>
-                                    </IconButton>
-
-                                    <span style={{fontSize: ".75rem"}}>
-                                        Não tem conta?
-                                        <Link href={"#"} className={classes.form__link}>
-                                            <strong>Crie a sua.</strong>
+                                            <InputLabel>
+                                                E-mail
+                                            </InputLabel>
+                                            <Input
+                                                name="email"
+                                                value={values.email}
+                                                onChange={handleChange}
+                                                endAdornment={
+                                                    <InputAdornment position="end">
+                                                        <Email />
+                                                    </InputAdornment>
+                                                }
+                                            />
+                                            <FormHelperText>
+                                                { errors.email && touched.email ? errors.email : null }
+                                            </FormHelperText>
+                                        </FormControl>
+                                        <FormControl
+                                            fullWidth
+                                            variant="outlined"
+                                            error={errors.password && touched.password}
+                                            className={classes.margin__bottom__16}
+                                        >
+                                            <InputLabel>
+                                                Senha
+                                            </InputLabel>
+                                            <Input
+                                                name="password"
+                                                value={values.password}
+                                                type={ showPassword ? "text" : "password" }
+                                                onChange={handleChange}
+                                                endAdornment={
+                                                    <InputAdornment position="end">
+                                                        <IconButton
+                                                            onClick={handleClickShowPassword}
+                                                            edge="end"
+                                                        >
+                                                            {
+                                                                showPassword
+                                                                    ? <Visibility />
+                                                                    : <VisibilityOff />
+                                                            }
+                                                        </IconButton>
+                                                    </InputAdornment>
+                                                }
+                                            />
+                                            <FormHelperText>
+                                                { errors.password && touched.password ? errors.password : null }
+                                            </FormHelperText>
+                                        </FormControl>
+                                        <Link
+                                            href={"#"}
+                                            className={
+                                                `${classes.form__link} ${classes.margin__bottom__40} ${classes.form__leftItem}`
+                                            }
+                                        >
+                                            <span>Esqueci minha senha</span>
                                         </Link>
-                                    </span>
-                                </form>
-                            )
+                                        <Button
+                                            type="submit"
+                                            variant="contained"
+                                            color="primary"
+                                            fullWidth
+                                            className={classes.margin__bottom__16}
+                                        >
+                                            entrar
+                                        </Button>
+                                        <span className={classes.margin__bottom__16}>
+                                            OU
+                                        </span>
+                                        <IconButton
+                                            disableRipple
+                                            className={classes.margin__bottom__8}
+                                        >
+                                            <img src="/images/google.svg"/>
+                                            <span
+                                                style={{marginLeft: "16px", color: "#02385A"}}
+                                            >
+                                                Entre com o Google
+                                            </span>
+                                        </IconButton>
+                                        <span style={{fontSize: ".75rem"}}>
+                                            Não tem conta?
+                                            <Link href={"#"} className={classes.form__link}>
+                                                <strong>Crie a sua.</strong>
+                                            </Link>
+                                        </span>
+                                    </form>
+                                )
+                            }
                         }
-                    }
-                </Formik>
-            </Box>
-        </Container>
+                    </Formik>
+                </Box>
+            </Container>
+        </TemplateAuth>
     )
 }
 

@@ -5,7 +5,7 @@ const useStyles = makeStyles()(() => {
     return{
         container: {
             padding: "185px 0",
-            background: "url(/images/backgroundLogin.webp) center center",
+            background: "url(/images/backgroundLogin.webp) fixed center",
             backgroundSize: "cover",
         }
     }
