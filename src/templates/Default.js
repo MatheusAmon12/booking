@@ -1,4 +1,5 @@
-import { Box, Grid, Typography } from "@mui/material"
+import { Box, Grid, IconButton, Typography } from "@mui/material"
+import Link from "next/link"
 import { makeStyles } from "tss-react/mui"
 
 const useStyles = makeStyles()((theme) => {
@@ -25,8 +26,8 @@ const useStyles = makeStyles()((theme) => {
         marginLeft: "350px",
         padding: '160px 0 160px 24px'
     },
-    textWhite: {
-        color: "#FFF"
+    link__decoration: {
+        textDecoration: "none"
     }
   }
 })
@@ -38,7 +39,7 @@ const TemplaDefault = ({ children }) => {
         <>
             <Box className = {classes.sidebar}>
                 <Typography
-                    className={classes.textWhite}
+                    color={"#FFF"}
                     component={"h1"}
                     variant="h1"
                     style={{marginBottom: "88px"}}
@@ -49,47 +50,55 @@ const TemplaDefault = ({ children }) => {
                 <Grid container rowGap="24px">
                     <Grid item md={12} className={classes.sidebar__actions}>
                         <img src="/images/profile.svg"/>
-                        <Typography
-                            className={classes.textWhite}
-                            component={"h6"}
-                            variant="h6"
-                        >
-                            Meu perfil
-                        </Typography>
+                        <Link href={"/user/profile"} className={classes.link__decoration}>
+                            <Typography
+                                color={"#FFF"}
+                                component={"h6"}
+                                variant="h6"
+                            >
+                                Meu perfil
+                            </Typography>
+                        </Link>
                     </Grid>
 
                     <Grid item md={12} className={classes.sidebar__actions}>
                         <img src="/images/add.svg"/>
-                        <Typography
-                            className={classes.textWhite}
-                            component={"h6"}
-                            variant="h6"
-                        >
-                            Criar reserva 
-                        </Typography>
+                        <Link href={"/user/create-booking"} className={classes.link__decoration}>
+                            <Typography
+                                color={"#FFF"}
+                                component={"h6"}
+                                variant="h6"
+                            >
+                                Criar reserva
+                            </Typography>
+                        </Link>
                     </Grid>
 
                     <Grid item md={12} className={classes.sidebar__actions}>
                         <img src="/images/list.svg"/>
-                        <Typography
-                            className={classes.textWhite}
-                            component={"h6"}
-                            variant="h6"
-                        >
-                            Listar reservas
-                        </Typography>
+                        <Link href={"/"} className={classes.link__decoration}>
+                            <Typography
+                                color={"#FFF"}
+                                component={"h6"}
+                                variant="h6"
+                            >
+                                Listar reservas
+                            </Typography>
+                        </Link>
                     </Grid>
                 </Grid>
 
                 <div className={classes.sidebar__logout}>
                     <Typography
-                        className={classes.textWhite}
+                        color={"#FFF"}
                         component={"h6"}
                         variant="h6"
                     >
                         Username
                     </Typography>
-                    <img src="/images/logout.svg" />
+                    <Link href={"/auth/signin"}>
+                        <img src="/images/logout.svg" />
+                    </Link>
                 </div>
             </Box>
 
