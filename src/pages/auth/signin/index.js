@@ -194,7 +194,7 @@ const Signin = () => {
                                         </IconButton>
                                         <span style={{fontSize: ".75rem"}}>
                                             Não tem conta?
-                                            <Link href={"#"} className={classes.form__link}>
+                                            <Link href={"/auth/signup"} className={classes.form__link}>
                                                 <strong>Crie a sua.</strong>
                                             </Link>
                                         </span>
