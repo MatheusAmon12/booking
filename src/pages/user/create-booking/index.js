@@ -32,16 +32,7 @@ const Profile = () => {
     const { classes } = useStyles()
 
     return(
-        <TemplaDefault>
-            <Typography
-                component={"h2"}
-                variant="h2"
-                color={"black"}
-                className={classes.title}
-            >
-                Criar reserva
-            </Typography>
-
+        <TemplaDefault title={"Criar reserva"}>
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}

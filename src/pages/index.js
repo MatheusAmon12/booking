@@ -34,15 +34,7 @@ const Home = () => {
   const { classes } = useStyles()
 
   return(
-    <TemplaDefault>
-      <Typography
-        component={"h2"}
-        variant="h2"
-        color={"black"}
-      >
-        Lista de reservas
-      </Typography>
-
+    <TemplaDefault title={"Lista de reservas"}>
       <table className={classes.main__table}>
         <thead>
           <tr>

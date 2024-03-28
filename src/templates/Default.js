@@ -4,6 +4,9 @@ import { makeStyles } from "tss-react/mui"
 
 const useStyles = makeStyles()((theme) => {
   return{
+    title: {
+        marginBottom: "32px",
+    },
     sidebar: {
         position: "fixed",
         padding: "16px 0 80px 64px",
@@ -28,11 +31,11 @@ const useStyles = makeStyles()((theme) => {
     },
     link__decoration: {
         textDecoration: "none"
-    }
+    },
   }
 })
 
-const TemplaDefault = ({ children }) => {
+const TemplaDefault = ({ children, title }) => {
     const { classes } = useStyles()
 
     return(
@@ -103,6 +106,14 @@ const TemplaDefault = ({ children }) => {
             </Box>
 
             <main className={classes.main}>
+                <Typography
+                    component={"h2"}
+                    variant="h2"
+                    color={"black"}
+                    className={classes.title}
+                >
+                    {title}
+                </Typography>
                 { children }
             </main>
         </>

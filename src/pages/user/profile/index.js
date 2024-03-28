@@ -9,9 +9,6 @@ import { useState } from "react"
 
 const useStyles = makeStyles()((theme) => {
     return{
-        title: {
-            marginBottom: "32px",
-        },
         form: {
             display: "flex",
             flexDirection: "column",
@@ -46,16 +43,7 @@ const Profile = () => {
     }
 
     return(
-        <TemplaDefault>
-            <Typography
-                component={"h2"}
-                variant="h2"
-                color={"black"}
-                className={classes.title}
-            >
-                Meu perfil
-            </Typography>
-
+        <TemplaDefault title={"Meu perfil"}>
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
