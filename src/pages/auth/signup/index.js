@@ -70,7 +70,7 @@ const useStyles = makeStyles()((theme) => {
     }
 })
 
-const Profile = () => {
+const Signup = () => {
     const { classes } = useStyles()
     const [showPassword, setShowPassword] = useState(false)
     const [showPasswordConfirm, setShowPasswordConfirm] = useState(false)
@@ -266,4 +266,4 @@ const Profile = () => {
     )
 }
 
-export default Profile
+export default Signup

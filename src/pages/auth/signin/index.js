@@ -17,9 +17,9 @@ import { Email, Visibility, VisibilityOff } from "@mui/icons-material"
 
 import { makeStyles } from "tss-react/mui"
 import { Formik } from "formik"
+import Link from "next/link"
 
 import { initialValues, validationSchema } from "./formValues"
-import Link from "next/link"
 
 const useStyles = makeStyles()((theme) => {
     return{
@@ -72,7 +72,7 @@ const useStyles = makeStyles()((theme) => {
     }
 })
 
-const Profile = () => {
+const Signin = () => {
     const { classes } = useStyles()
     const [showPassword, setShowPassword] = useState(false)
 
@@ -219,4 +219,4 @@ const Profile = () => {
     )
 }
 
-export default Profile
+export default Signin
