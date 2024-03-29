@@ -29,7 +29,7 @@ const TopBar = ({ onClickMenu }) => {
 
     return (
         <Box sx={{ flexGrow: 1 }} className={classes.box}>
-            <AppBar position="absolute" color='secondary' className={classes.appBar}>
+            <AppBar position="fixed" color='secondary' className={classes.appBar}>
                 <Toolbar variant="dense" className={classes.toolBar}>
                     <Typography variant="h2" color="inherit" component="div">
                         Dreamscape

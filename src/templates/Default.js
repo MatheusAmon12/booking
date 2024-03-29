@@ -7,13 +7,14 @@ import { makeStyles } from "tss-react/mui"
 const useStyles = makeStyles()((theme) => {
   return{
     sidebar: {
-        position: "absolute",
+        position: "fixed",
         top: "0",
         left: "0",
         padding: "16px 0 80px 64px",
         height: "100vh",
         width: "350px",
         backgroundColor: theme.palette.secondary.main,
+        zIndex: 2
     },
     sidebarHidden: {
         [theme.breakpoints.down("sm")]: {
@@ -32,7 +33,7 @@ const useStyles = makeStyles()((theme) => {
         gap: "24px",
     },
     sidebar__logout: {
-        position: "absolute",
+        position: "fixed",
         bottom: "80px",
 
         display: "flex",
@@ -66,7 +67,9 @@ const TemplaDefault = ({ children, title }) => {
     }
 
     return(
-        <>
+        <>  
+            <TopBar onClickMenu={handleClickMenu}/>
+
             <Box className = {`${classes.sidebar} ${openMenu ? classes.sidebarShow : classes.sidebarHidden}`}>
                 <Typography
                     color={"#FFF"}
@@ -132,13 +135,12 @@ const TemplaDefault = ({ children, title }) => {
                 </div>
             </Box>
 
-            <TopBar onClickMenu={handleClickMenu}/>
-
             <main className={classes.main}>
                 <Typography
                     component={"h2"}
                     variant="h2"
-                    color={"black"}
+                    color={"secondary"}
+                    style={{marginBottom: "16px"}}
                 >
                     {title}
                 </Typography>

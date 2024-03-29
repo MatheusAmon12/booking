@@ -4,10 +4,6 @@ import TemplaDefault from "@/templates/Default"
 
 const useStyles = makeStyles()((theme) => {
   return{
-    main: {
-      marginLeft: "350px",
-      padding: '160px 0 0 24px'
-    },
     main__table: {
       width: "100%",
       marginTop: "32px",

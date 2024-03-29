@@ -15,9 +15,16 @@ const useStyles = makeStyles()((theme) => {
             flexDirection: "column",
             rowGap: "16px",
             width: "60%",
+            [theme.breakpoints.down("sm")]: {
+                width: "90%",
+                margin: "0 auto"
+            }
         },
         form__date: {
-            width: "12vw"
+            width: "12vw",
+            [theme.breakpoints.down("sm")]: {
+                width: "45vw"
+            }
         },
         button: {
             width: "250px",
@@ -28,7 +35,7 @@ const useStyles = makeStyles()((theme) => {
     }
 })
 
-const Profile = () => {
+const CreateBooking = () => {
     const { classes } = useStyles()
 
     return(
@@ -130,4 +137,4 @@ const Profile = () => {
     )
 }
 
-export default Profile
+export default CreateBooking
