@@ -1,18 +1,31 @@
+import TopBar from "@/components/AppBar"
 import { Box, Grid, IconButton, Typography } from "@mui/material"
 import Link from "next/link"
+import { useState } from "react"
 import { makeStyles } from "tss-react/mui"
 
 const useStyles = makeStyles()((theme) => {
   return{
-    title: {
-        marginBottom: "32px",
-    },
     sidebar: {
-        position: "fixed",
+        position: "absolute",
+        top: "0",
+        left: "0",
         padding: "16px 0 80px 64px",
         height: "100vh",
         width: "350px",
         backgroundColor: theme.palette.secondary.main,
+    },
+    sidebarHidden: {
+        [theme.breakpoints.down("sm")]: {
+            left: "-100vw",
+            transition: "ease-out 300ms"
+        }
+    },
+    sidebarShow: {
+        [theme.breakpoints.down("sm")]: {
+            left: "0",
+            transition: "ease-in 300ms"
+        }
     },
     sidebar__actions: {
         display: "flex",
@@ -25,9 +38,18 @@ const useStyles = makeStyles()((theme) => {
         display: "flex",
         gap: "24px"
     },
+    sidebar__containerGrid: {
+        display: "flex",
+        flexDirection: "column"
+    },
     main: {
         marginLeft: "350px",
-        padding: '160px 0 160px 24px'
+        padding: "160px 24px",
+
+        [theme.breakpoints.down("sm")]: {
+            margin: "0",
+            padding: "160px 8px 160px 8px",
+        }
     },
     link__decoration: {
         textDecoration: "none"
@@ -37,10 +59,15 @@ const useStyles = makeStyles()((theme) => {
 
 const TemplaDefault = ({ children, title }) => {
     const { classes } = useStyles()
+    const [openMenu, setOpenMenu] = useState(false)
+
+    const handleClickMenu = () => {
+        setOpenMenu(!openMenu)
+    }
 
     return(
         <>
-            <Box className = {classes.sidebar}>
+            <Box className = {`${classes.sidebar} ${openMenu ? classes.sidebarShow : classes.sidebarHidden}`}>
                 <Typography
                     color={"#FFF"}
                     component={"h1"}
@@ -50,7 +77,7 @@ const TemplaDefault = ({ children, title }) => {
                     Dreamscape
                 </Typography>
                 
-                <Grid container rowGap="24px">
+                <Grid container rowGap="24px" className={classes.sidebar__containerGrid}>
                     <Grid item md={12} className={classes.sidebar__actions}>
                         <img src="/images/profile.svg"/>
                         <Link href={"/user/profile"} className={classes.link__decoration}>
@@ -105,12 +132,13 @@ const TemplaDefault = ({ children, title }) => {
                 </div>
             </Box>
 
+            <TopBar onClickMenu={handleClickMenu}/>
+
             <main className={classes.main}>
                 <Typography
                     component={"h2"}
                     variant="h2"
                     color={"black"}
-                    className={classes.title}
                 >
                     {title}
                 </Typography>
