@@ -42,6 +42,11 @@ const useStyles = makeStyles()((theme) => {
             boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
             backdropFilter: "blur(10.7px)",
             border: '1px solid rgba(255, 255, 255, 0.21)',
+
+            [theme.breakpoints.down("sm")]: {
+                padding: "20px 35px",
+                width: "350px",
+            }
         },
         form: {  
             display: "flex",
