@@ -1,6 +1,8 @@
 import { makeStyles } from "tss-react/mui"
 
 import TemplaDefault from "@/templates/Default"
+import { useEffect, useState } from "react"
+import axios from "axios"
 
 const useStyles = makeStyles()((theme) => {
   return{
@@ -36,6 +38,19 @@ const useStyles = makeStyles()((theme) => {
 
 const Home = () => {
   const { classes } = useStyles()
+  const [bookings, setBookings] = useState([])
+
+  const api = axios.create({
+    baseURL: "http://localhost:3333/api/"
+  })
+
+  useEffect(() => {
+    api.get("/bookings")
+      .then(response => {
+        setBookings(response.data.bookings)
+      })
+      .catch(error => console.log("Error na listagem:", error))
+  }, [])
 
   return(
     <TemplaDefault title={"Lista de reservas"}>
@@ -47,7 +62,7 @@ const Home = () => {
                 Nome
               </th>
               <th className={`${classes.main__table__border} ${classes.main__table_th}`}>
-                E-mail
+                Nº do Quarto
               </th>
               <th className={`${classes.main__table__border} ${classes.main__table_th}`}>
                 Check-in
@@ -58,20 +73,24 @@ const Home = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className={classes.main__table__border}>
-                Matheus Amon
-              </td>
-              <td className={classes.main__table__border}>
-                amonmatheus757@gmail.com
-              </td>
-              <td className={classes.main__table__border}>
-                12/07/2024
-              </td>
-              <td className={classes.main__table__border}>
-                14/07/2024
-              </td>
-            </tr>
+            {
+              bookings.map(booking => (
+                <tr key={booking.id}>
+                  <td className={classes.main__table__border}>
+                    {booking.guestName}
+                  </td>
+                  <td className={classes.main__table__border}>
+                    {booking.roomId}
+                  </td>
+                  <td className={classes.main__table__border}>
+                    {new Date(booking.checkInDate).toLocaleDateString()}
+                  </td>
+                  <td className={classes.main__table__border}>
+                    {new Date(booking.checkOutDate).toLocaleDateString()}
+                  </td>
+                </tr>
+              ))
+            }
           </tbody>
         </table>
       </div>
