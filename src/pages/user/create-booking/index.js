@@ -5,6 +5,7 @@ import { Formik } from "formik"
 
 import { initialValues, validationSchema } from "./formValues"
 import axios from "axios"
+import useToasty from "@/context/Toasty"
 
 const useStyles = makeStyles()((theme) => {
     return{
@@ -38,19 +39,38 @@ const useStyles = makeStyles()((theme) => {
 
 const CreateBooking = () => {
     const { classes } = useStyles()
+    const { setToasty } = useToasty()
+
     const api = axios.create({
         baseURL: "http://localhost:3333/api/"
     })
     
-    const handleFormSubmit = (values) => {
-        api.post("/bookings", {
-            roomId: values.roomId,
-            guestName: values.name,
-            checkInDate: values.checkInDate,
-            checkOutDate: values.checkOutDate
-        })
-            .then(response => console.log(response))
-            .catch(error => console.log("Erro ao criar reserva:", error))
+    const handleFormSubmit = async (values) => {
+        try{
+            const response = await api.post("/bookings", {
+                roomId: values.roomId,
+                guestName: values.name,
+                checkInDate: values.checkInDate,
+                checkOutDate: values.checkOutDate
+            })
+
+            if(response.status === 201){
+                setToasty({
+                    open: true,
+                    text: "Reserva criada com sucesso!",
+                    severity: "success"
+                })
+            }
+        } catch(error){
+            if(error.response.status === 500){
+                setToasty({
+                    open: true,
+                    text: "Quarto já reservado para as datas selecionadas!",
+                    severity: "error"
+                })
+            }
+        }
+        
     }
 
     return(
