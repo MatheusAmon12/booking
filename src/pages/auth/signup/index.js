@@ -1,4 +1,5 @@
 import { useState } from "react"
+import axios from "axios"
 
 import { 
     Button,
@@ -21,7 +22,8 @@ import Link from "next/link"
 
 import { initialValues, validationSchema } from "./formValues"
 import TemplateAuth from "@/templates/Auth"
-import axios from "axios"
+import useToasty from "@/context/Toasty"
+import { useRouter } from "next/router"
 
 const useStyles = makeStyles()((theme) => {
     return{
@@ -78,9 +80,13 @@ const useStyles = makeStyles()((theme) => {
 
 const Signup = () => {
     const { classes } = useStyles()
+    const router = useRouter()
+    const { setToasty } = useToasty()
+
     const api = axios.create({
         baseURL: "http://localhost:3333/api/"
     })
+
     const [showPassword, setShowPassword] = useState(false)
     const [showPasswordConfirm, setShowPasswordConfirm] = useState(false)
 
@@ -91,14 +97,30 @@ const Signup = () => {
             setShowPasswordConfirm(!showPasswordConfirm)
         }
     }
-    const handleFormSubmit = (values) => {
-        api.post("/auth/register", {
-            name: values.name,
-            email: values.email,
-            password: values.password
-        })
-            .then(response => console.log(response))
-            .catch(error => console.log("Error ao cadastrar!", error))
+    const handleFormSubmit = async (values) => {
+        try{
+            const response = await api.post("/auth/register", {
+                name: values.name,
+                email: values.email,
+                password: values.password
+            })
+
+            if(response.status === 201){
+                setToasty({
+                    open: true,
+                    text: "Usuário registrado com sucesso!",
+                    severity: "success"
+                })
+            }
+        } catch(error){
+            if(error.response.status === 400){
+                setToasty({
+                    open: true,
+                    text: "E-mail já cadastrado!",
+                    severity: "error"
+                })
+            }
+        }
     }
 
     return(

@@ -4,6 +4,7 @@ import { CacheProvider } from '@emotion/react'
 
 import createEmotionCache from '../../createEmotionCache'
 import theme from '../theme'
+import { ToastyProvider } from '@/context/Toasty'
  
 export default function MyApp({ Component, pageProps }) {
   const cache = createEmotionCache()
@@ -13,7 +14,9 @@ export default function MyApp({ Component, pageProps }) {
       <CssBaseline />
       <CacheProvider value={cache}>
         <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
+          <ToastyProvider>
+            <Component {...pageProps} />
+          </ToastyProvider>
         </ThemeProvider>
       </CacheProvider>
     </>
