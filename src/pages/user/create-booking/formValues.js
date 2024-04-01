@@ -2,7 +2,6 @@ import * as yup from "yup"
 
 const initialValues = {
     name: "",
-    email: "",
     checkInDate: "",
     checkOutDate: "",
     roomId: "",
@@ -11,9 +10,6 @@ const initialValues = {
 const validationSchema = yup.object().shape({
     name: yup.string()
         .min(2, "Mínimo de 2 caracteres!")
-        .required("Campo obrigatório!"),
-    email: yup.string()
-        .email("Formato de E-mail inválido!")
         .required("Campo obrigatório!"),
     checkInDate: yup.date()
         .min(new Date(), "O check-in não pode ser anterior ao dia atual!")

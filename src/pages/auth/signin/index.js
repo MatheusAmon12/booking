@@ -21,6 +21,7 @@ import Link from "next/link"
 
 import { initialValues, validationSchema } from "./formValues"
 import TemplateAuth from "@/templates/Auth"
+import axios from "axios"
 
 const useStyles = makeStyles()((theme) => {
     return{
@@ -78,9 +79,21 @@ const useStyles = makeStyles()((theme) => {
 const Signin = () => {
     const { classes } = useStyles()
     const [showPassword, setShowPassword] = useState(false)
+    const api = axios.create({
+        baseURL: "http://localhost:3333/api/"
+    })
 
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword)
+    }
+    const handleFormSubmit = (values) => {
+        api.post("/auth/login", {
+            email: values.email,
+            password: values.password
+        })
+            .then(response => console.log(response.data))
+            .catch(error => console.log("Falha no login!", error))
+
     }
 
     return(
@@ -99,6 +112,7 @@ const Signin = () => {
                     <Formik
                         initialValues={initialValues}
                         validationSchema={validationSchema}
+                        onSubmit={(values) => handleFormSubmit(values)}
                     >
                         {
                             ({

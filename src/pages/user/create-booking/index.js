@@ -1,9 +1,10 @@
 import TemplaDefault from "@/templates/Default"
-import { Button, FormControl, FormHelperText, Input, InputLabel, Typography } from "@mui/material"
+import { Button, CircularProgress, FormControl, FormHelperText, Input, InputLabel, Typography } from "@mui/material"
 import { makeStyles } from "tss-react/mui"
 import { Formik } from "formik"
 
 import { initialValues, validationSchema } from "./formValues"
+import axios from "axios"
 
 const useStyles = makeStyles()((theme) => {
     return{
@@ -37,18 +38,36 @@ const useStyles = makeStyles()((theme) => {
 
 const CreateBooking = () => {
     const { classes } = useStyles()
+    const api = axios.create({
+        baseURL: "http://localhost:3333/api/"
+    })
+    
+    const handleFormSubmit = (values) => {
+        api.post("/bookings", {
+            roomId: values.roomId,
+            guestName: values.name,
+            checkInDate: values.checkInDate,
+            checkOutDate: values.checkOutDate
+        })
+            .then(response => console.log(response))
+            .catch(error => console.log("Erro ao criar reserva:", error))
+    }
 
     return(
         <TemplaDefault title={"Criar reserva"}>
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
+                onSubmit={(values) => {
+                    handleFormSubmit(values)
+                }}
             >
                 {
                     ({
                         touched,
                         values,
                         errors,
+                        isSubmitting,
                         handleChange,
                         handleSubmit,
                     }) => {
@@ -66,21 +85,6 @@ const CreateBooking = () => {
 
                                     <FormHelperText>
                                         { errors.name && touched.name ? errors.name : null }
-                                    </FormHelperText>
-                                </FormControl>
-
-                                <FormControl variant="outlined" error={errors.email && touched.email}>
-                                    <InputLabel>
-                                        E-mail
-                                    </InputLabel>
-                                    <Input 
-                                        name="email"
-                                        value={values.email}
-                                        onChange={handleChange}
-                                    />
-
-                                    <FormHelperText>
-                                        { errors.email && touched.email ? errors.email : null }
                                     </FormHelperText>
                                 </FormControl>
 
