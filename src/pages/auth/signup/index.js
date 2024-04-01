@@ -112,6 +112,8 @@ const Signup = () => {
                     severity: "success"
                 })
             }
+
+            router.push("/auth/signin")
         } catch(error){
             if(error.response.status === 400){
                 setToasty({

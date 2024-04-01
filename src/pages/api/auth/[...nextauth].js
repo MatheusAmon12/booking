@@ -16,9 +16,8 @@ const options = {
                         email: credentials.email,
                         password: credentials.password
                     })
-                    console.log("Essa é a resposta da req", data)
+                    console.log(data)
                     if(data.user){
-                        console.log("Dentro do user", data.user)
                         return data.user
                     } else return null
                 } catch(error){

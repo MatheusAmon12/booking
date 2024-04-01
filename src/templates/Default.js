@@ -1,7 +1,7 @@
 import TopBar from "@/components/AppBar"
 import { Logout } from "@mui/icons-material"
 import { Box, Grid, IconButton, Typography } from "@mui/material"
-import { signOut } from "next-auth/react"
+import { signOut, useSession } from "next-auth/react"
 import Link from "next/link"
 import { useState } from "react"
 import { makeStyles } from "tss-react/mui"
@@ -64,6 +64,8 @@ const useStyles = makeStyles()((theme) => {
 const TemplaDefault = ({ children, title }) => {
     const { classes } = useStyles()
     const [openMenu, setOpenMenu] = useState(false)
+    const {data: session} = useSession()
+    console.log(session.user.name)
 
     const handleClickMenu = () => {
         setOpenMenu(!openMenu)
@@ -135,7 +137,9 @@ const TemplaDefault = ({ children, title }) => {
                         component={"h6"}
                         variant="h6"
                     >
-                        Name
+                        {
+                            session.user.name
+                        }
                     </Typography>
                     <IconButton onClick={handleLogOut}>
                         <Logout color="#FFF" />
