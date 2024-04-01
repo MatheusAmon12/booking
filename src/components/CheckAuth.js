@@ -1,6 +1,8 @@
 import { useSession } from "next-auth/react"
 import { useEffect } from "react"
-import { useRouter } from "next/router" 
+import { useRouter } from "next/router"
+
+import BackdropLoading from "./Backdrop"
 
 const CheckAuth = ({ Component, pageProps }) => {
     const { data: session, status } = useSession()
@@ -15,7 +17,9 @@ const CheckAuth = ({ Component, pageProps }) => {
 
     if(session) return <Component {...pageProps} />
     
-    return "Loading..."
+    return (
+        <BackdropLoading open={true} />
+    )
 }
 
 export default CheckAuth

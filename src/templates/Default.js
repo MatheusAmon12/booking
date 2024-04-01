@@ -1,9 +1,8 @@
 import TopBar from "@/components/AppBar"
 import { Logout } from "@mui/icons-material"
 import { Box, Grid, IconButton, Typography } from "@mui/material"
-import { signOut, useSession } from "next-auth/react"
+import { signOut } from "next-auth/react"
 import Link from "next/link"
-import { useRouter } from "next/router"
 import { useState } from "react"
 import { makeStyles } from "tss-react/mui"
 
@@ -65,14 +64,14 @@ const useStyles = makeStyles()((theme) => {
 const TemplaDefault = ({ children, title }) => {
     const { classes } = useStyles()
     const [openMenu, setOpenMenu] = useState(false)
-    const router = useRouter()
 
     const handleClickMenu = () => {
         setOpenMenu(!openMenu)
     }
     const handleLogOut = async () => {
-        await signOut()
-        router.push("/auth/signin")
+        await signOut({
+            callbackUrl: "/auth/signin"
+        })
     }
 
     return(
