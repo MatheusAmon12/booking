@@ -1,11 +1,13 @@
 import TemplaDefault from "@/templates/Default"
-import { Button, CircularProgress, FormControl, FormHelperText, Input, InputLabel, Typography } from "@mui/material"
+import { Button, FormControl, FormHelperText, Input, InputLabel } from "@mui/material"
 import { makeStyles } from "tss-react/mui"
 import { Formik } from "formik"
+import axios from "axios"
+import { useSession } from "next-auth/react"
 
 import { initialValues, validationSchema } from "./formValues"
-import axios from "axios"
 import useToasty from "@/context/Toasty"
+import { useRouter } from "next/router"
 
 const useStyles = makeStyles()((theme) => {
     return{
@@ -40,6 +42,8 @@ const useStyles = makeStyles()((theme) => {
 const CreateBooking = () => {
     const { classes } = useStyles()
     const { setToasty } = useToasty()
+    const router = useRouter()
+    const {data: session, status} = useSession()
 
     const api = axios.create({
         baseURL: "http://localhost:3333/api/"
@@ -160,5 +164,7 @@ const CreateBooking = () => {
         </TemplaDefault>
     )
 }
+
+CreateBooking.requireAuth = true
 
 export default CreateBooking

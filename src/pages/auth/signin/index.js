@@ -18,10 +18,10 @@ import { Email, Visibility, VisibilityOff } from "@mui/icons-material"
 import { makeStyles } from "tss-react/mui"
 import { Formik } from "formik"
 import Link from "next/link"
+import { signIn, useSession } from "next-auth/react"
 
 import { initialValues, validationSchema } from "./formValues"
 import TemplateAuth from "@/templates/Auth"
-import axios from "axios"
 
 const useStyles = makeStyles()((theme) => {
     return{
@@ -79,21 +79,19 @@ const useStyles = makeStyles()((theme) => {
 const Signin = () => {
     const { classes } = useStyles()
     const [showPassword, setShowPassword] = useState(false)
-    const api = axios.create({
-        baseURL: "http://localhost:3333/api/"
-    })
+    const {data: session, status} = useSession()
+
+    console.log(session, status)
 
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword)
     }
-    const handleFormSubmit = (values) => {
-        api.post("/auth/login", {
+    const handleFormSubmit = async (values) => {
+        await signIn('credentials', {
             email: values.email,
-            password: values.password
+            password: values.password,
+            callbackUrl: "/"
         })
-            .then(response => console.log(response.data))
-            .catch(error => console.log("Falha no login!", error))
-
     }
 
     return(

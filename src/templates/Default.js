@@ -1,6 +1,9 @@
 import TopBar from "@/components/AppBar"
+import { Logout } from "@mui/icons-material"
 import { Box, Grid, IconButton, Typography } from "@mui/material"
+import { signOut, useSession } from "next-auth/react"
 import Link from "next/link"
+import { useRouter } from "next/router"
 import { useState } from "react"
 import { makeStyles } from "tss-react/mui"
 
@@ -37,6 +40,7 @@ const useStyles = makeStyles()((theme) => {
         bottom: "80px",
 
         display: "flex",
+        alignItems: "center",
         gap: "24px"
     },
     sidebar__containerGrid: {
@@ -61,9 +65,14 @@ const useStyles = makeStyles()((theme) => {
 const TemplaDefault = ({ children, title }) => {
     const { classes } = useStyles()
     const [openMenu, setOpenMenu] = useState(false)
+    const router = useRouter()
 
     const handleClickMenu = () => {
         setOpenMenu(!openMenu)
+    }
+    const handleLogOut = async () => {
+        await signOut()
+        router.push("/auth/signin")
     }
 
     return(
@@ -127,11 +136,11 @@ const TemplaDefault = ({ children, title }) => {
                         component={"h6"}
                         variant="h6"
                     >
-                        Username
+                        Name
                     </Typography>
-                    <Link href={"/auth/signin"}>
-                        <img src="/images/logout.svg" />
-                    </Link>
+                    <IconButton onClick={handleLogOut}>
+                        <Logout color="#FFF" />
+                    </IconButton>
                 </div>
             </Box>
 
