@@ -21,6 +21,7 @@ import Link from "next/link"
 
 import { initialValues, validationSchema } from "./formValues"
 import TemplateAuth from "@/templates/Auth"
+import axios from "axios"
 
 const useStyles = makeStyles()((theme) => {
     return{
@@ -77,6 +78,9 @@ const useStyles = makeStyles()((theme) => {
 
 const Signup = () => {
     const { classes } = useStyles()
+    const api = axios.create({
+        baseURL: "http://localhost:3333/api/"
+    })
     const [showPassword, setShowPassword] = useState(false)
     const [showPasswordConfirm, setShowPasswordConfirm] = useState(false)
 
@@ -86,6 +90,15 @@ const Signup = () => {
         }else if(field === "confirmPassword"){
             setShowPasswordConfirm(!showPasswordConfirm)
         }
+    }
+    const handleFormSubmit = (values) => {
+        api.post("/auth/register", {
+            name: values.name,
+            email: values.email,
+            password: values.password
+        })
+            .then(response => console.log(response))
+            .catch(error => console.log("Error ao cadastrar!", error))
     }
 
     return(
@@ -104,6 +117,7 @@ const Signup = () => {
                     <Formik
                         initialValues={initialValues}
                         validationSchema={validationSchema}
+                        onSubmit={(values) => handleFormSubmit(values)}
                     >
                         {
                             ({
