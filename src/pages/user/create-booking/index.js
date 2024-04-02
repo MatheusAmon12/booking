@@ -7,7 +7,6 @@ import { useSession } from "next-auth/react"
 
 import { initialValues, validationSchema } from "./formValues"
 import useToasty from "@/context/Toasty"
-import { useRouter } from "next/router"
 
 const useStyles = makeStyles()((theme) => {
     return{
@@ -42,8 +41,6 @@ const useStyles = makeStyles()((theme) => {
 const CreateBooking = () => {
     const { classes } = useStyles()
     const { setToasty } = useToasty()
-    const router = useRouter()
-    const {data: session, status} = useSession()
 
     const api = axios.create({
         baseURL: "http://localhost:3333/api/"

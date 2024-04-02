@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import { 
     Button,
@@ -22,6 +22,8 @@ import { signIn, useSession } from "next-auth/react"
 
 import { initialValues, validationSchema } from "./formValues"
 import TemplateAuth from "@/templates/Auth"
+import useToasty from "@/context/Toasty"
+import { useRouter } from "next/router"
 
 const useStyles = makeStyles()((theme) => {
     return{
@@ -79,9 +81,18 @@ const useStyles = makeStyles()((theme) => {
 const Signin = () => {
     const { classes } = useStyles()
     const [showPassword, setShowPassword] = useState(false)
-    const {data: session, status} = useSession()
+    const router = useRouter()
+    const {setToasty} = useToasty()
 
-    console.log(session, status)
+    useEffect(() => {
+        if(router.query){
+            setToasty({
+                open: true,
+                text: "Usuário não encontrado! Verifique suas credenciais",
+                severity: "error"
+            })
+        }
+    }, [router.query])
 
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword)
@@ -90,8 +101,9 @@ const Signin = () => {
         await signIn('credentials', {
             email: values.email,
             password: values.password,
-            callbackUrl: "/"
+            callbackUrl: "/",
         })
+            .then(res => console.log(res))
     }
     const handleClickGoogle = async () => {
         await signIn('google', {

@@ -42,8 +42,6 @@ const Home = () => {
   const { classes } = useStyles()
   const [bookings, setBookings] = useState([])
   const router = useRouter()
-  const { data: session, status } = useSession()
-  console.log(session, status)
 
   const api = axios.create({
     baseURL: "http://localhost:3333/api/"

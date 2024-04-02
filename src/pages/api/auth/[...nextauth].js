@@ -4,6 +4,9 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import GoogleProvider from "next-auth/providers/google"
 
 const options = {
+    pages: {
+        error: "/auth/signin?i=1"
+    },
     providers: [
         CredentialsProvider({
             name: "Credentials",
@@ -19,9 +22,9 @@ const options = {
                     })
                     if(data.user){
                         return data.user
-                    } else return null
+                    } else throw "Erro ao efetuar login!"
                 } catch(error){
-                    console.log("Erro ao fazer login!", error)
+                    throw error.message
                 }
             }
         }),
@@ -29,7 +32,7 @@ const options = {
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET
         })
-    ]
+    ],
 }
 
 export default (req, res) => NextAuth(req, res, options)
