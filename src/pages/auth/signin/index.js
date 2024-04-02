@@ -93,6 +93,11 @@ const Signin = () => {
             callbackUrl: "/"
         })
     }
+    const handleClickGoogle = async () => {
+        await signIn('google', {
+            callbackUrl: "/"
+        })
+    }
 
     return(
         <TemplateAuth>
@@ -201,6 +206,7 @@ const Signin = () => {
                                         <IconButton
                                             disableRipple
                                             className={classes.margin__bottom__8}
+                                            onClick={handleClickGoogle}
                                         >
                                             <img src="/images/google.svg"/>
                                             <span

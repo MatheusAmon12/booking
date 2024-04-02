@@ -1,6 +1,7 @@
 import axios from "axios"
 import NextAuth from "next-auth/next"
 import CredentialsProvider from "next-auth/providers/credentials"
+import GoogleProvider from "next-auth/providers/google"
 
 const options = {
     providers: [
@@ -16,14 +17,17 @@ const options = {
                         email: credentials.email,
                         password: credentials.password
                     })
-                    console.log(data)
                     if(data.user){
                         return data.user
                     } else return null
                 } catch(error){
-                    console.log("Erro na credentials", error)
+                    console.log("Erro ao fazer login!", error)
                 }
             }
+        }),
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET
         })
     ]
 }
