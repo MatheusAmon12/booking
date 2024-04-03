@@ -85,7 +85,7 @@ const Signin = () => {
     const {setToasty} = useToasty()
 
     useEffect(() => {
-        if(router.query){
+        if(router.query.i){
             setToasty({
                 open: true,
                 text: "Usuário não encontrado! Verifique suas credenciais",

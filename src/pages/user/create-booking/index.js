@@ -3,7 +3,6 @@ import { Button, FormControl, FormHelperText, Input, InputLabel } from "@mui/mat
 import { makeStyles } from "tss-react/mui"
 import { Formik } from "formik"
 import axios from "axios"
-import { useSession } from "next-auth/react"
 
 import { initialValues, validationSchema } from "./formValues"
 import useToasty from "@/context/Toasty"

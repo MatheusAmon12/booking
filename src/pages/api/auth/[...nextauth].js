@@ -14,14 +14,17 @@ const options = {
                 email: {label: "Email", type: "email", placeholder: "example@email.com"},
                 password: {label: "Password", type: "password"}
             },
-            async authorize(credentials) {
+            async authorize(credentials, res) {
                 try{
                     const { data } = await axios.post("http://localhost:3333/api/auth/login", {
                         email: credentials.email,
                         password: credentials.password
                     })
+
                     if(data.user){
-                        return data.user
+                        const user = data.user
+
+                        return user
                     } else throw "Erro ao efetuar login!"
                 } catch(error){
                     throw error.message

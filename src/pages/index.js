@@ -3,8 +3,6 @@ import { makeStyles } from "tss-react/mui"
 import TemplaDefault from "@/templates/Default"
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { useSession } from "next-auth/react"
-import { useRouter } from "next/router"
 
 const useStyles = makeStyles()((theme) => {
   return{
@@ -41,7 +39,6 @@ const useStyles = makeStyles()((theme) => {
 const Home = () => {
   const { classes } = useStyles()
   const [bookings, setBookings] = useState([])
-  const router = useRouter()
 
   const api = axios.create({
     baseURL: "http://localhost:3333/api/"
