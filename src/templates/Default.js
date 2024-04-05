@@ -141,7 +141,7 @@ const TemplaDefault = ({ children, title }) => {
                             session.user.name
                         }
                     </Typography>
-                    <IconButton onClick={handleLogOut}>
+                    <IconButton color="#FFF" onClick={handleLogOut}>
                         <Logout color="#FFF" />
                     </IconButton>
                 </div>
