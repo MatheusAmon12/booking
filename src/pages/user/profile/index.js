@@ -5,7 +5,9 @@ import { Formik } from "formik"
 
 import { initialValues, validationSchema } from "./formValues"
 import { Edit } from "@mui/icons-material"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import { useSession } from "next-auth/react"
 
 const useStyles = makeStyles()((theme) => {
     return{
@@ -34,6 +36,13 @@ const Profile = () => {
     const [disabledEmail, setDisableEmail] = useState(true)
     const [disabledPassword, setDisablePassword] = useState(true)
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+    const [user, setUser] = useState({})
+    const { data: session } = useSession()
+
+    const api = axios.create({
+        baseURL: "http://localhost:3333/api/"
+    })
+    const userEmail = session.user.email
 
     const handleDisabled = (field) => {
         if(field === "name"){
@@ -45,6 +54,17 @@ const Profile = () => {
             setShowConfirmPassword(!showConfirmPassword)
         }
     }
+
+    useEffect(() => {
+        api.get(`/auth/user?email=${userEmail}`)
+            .then(response => {
+                const user = response.data.storedUser
+                setUser(user)
+            })
+            .catch(error => console.log(error))
+    }, [])
+
+    console.log(user)
 
     return(
         <TemplaDefault title={"Meu perfil"}>
@@ -68,7 +88,7 @@ const Profile = () => {
                                     </InputLabel>
                                     <Input 
                                         name="name"
-                                        value={"Matheus Amon dos Santos Ferreira"}
+                                        value={user.name || values.name}
                                         onChange={handleChange}
                                         disabled={disabledName ? true : false}
                                         endAdornment={
@@ -91,7 +111,7 @@ const Profile = () => {
                                     </InputLabel>
                                     <Input 
                                         name="email"
-                                        value={"amonmatheus757@gmail.com"}
+                                        value={user.email || values.password}
                                         onChange={handleChange}
                                         disabled={disabledEmail ? true : false}
                                         endAdornment={
@@ -114,7 +134,7 @@ const Profile = () => {
                                     </InputLabel>
                                     <Input 
                                         name="password"
-                                        value={"MatheusAmon"}
+                                        value={values.password}
                                         type={disabledPassword ? "password" : "text"}
                                         onChange={handleChange}
                                         disabled={disabledPassword ? true : false}
@@ -143,7 +163,7 @@ const Profile = () => {
                                             </InputLabel>
                                             <Input 
                                                 name="passwordConfirm"
-                                                value={"MatheusAmon"}
+                                                value={values.passwordConfirm}
                                                 onChange={handleChange}
                                             />
                                             <FormHelperText>

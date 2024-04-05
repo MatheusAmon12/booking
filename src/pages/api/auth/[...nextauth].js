@@ -14,7 +14,7 @@ const options = {
                 email: {label: "Email", type: "email", placeholder: "example@email.com"},
                 password: {label: "Password", type: "password"}
             },
-            async authorize(credentials, res) {
+            async authorize(credentials) {
                 try{
                     const { data } = await axios.post("http://localhost:3333/api/auth/login", {
                         email: credentials.email,
