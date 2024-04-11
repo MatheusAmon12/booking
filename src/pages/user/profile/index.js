@@ -1,35 +1,21 @@
-import TemplaDefault from "@/templates/Default"
-import { Button, FormControl, FormHelperText, IconButton, Input, InputLabel, Typography } from "@mui/material"
-import { makeStyles } from "tss-react/mui"
-import { Formik } from "formik"
-
-import { initialValues, validationSchema } from "./formValues"
-import { Edit } from "@mui/icons-material"
 import { useEffect, useState } from "react"
+import { 
+    Button, 
+    FormControl, 
+    FormHelperText, 
+    IconButton, Input, 
+    InputLabel, 
+    Typography,
+} from "@mui/material"
+import { Edit } from "@mui/icons-material"
+import { Formik } from "formik"
 import axios from "axios"
 import { signOut, useSession } from "next-auth/react"
-import useToasty from "@/context/Toasty"
 
-const useStyles = makeStyles()((theme) => {
-    return{
-        form: {
-            display: "flex",
-            flexDirection: "column",
-            rowGap: "16px",
-            width: "60%",
-            [theme.breakpoints.down("sm")]: {
-                width: "90%",
-                margin: "0 auto"
-            }
-        },
-        button: {
-            width: "250px",
-            height: "54px",
-            marginTop: "40px",
-            fontSize: "24px"
-        },
-    }
-})
+import { validationSchema } from "./formValues"
+import useToasty from "@/context/Toasty"
+import TemplaDefault from "@/templates/Default"
+import useStyles from "../../../styles/profileStyles"
 
 const Profile = () => {
     const { classes } = useStyles()
@@ -95,8 +81,6 @@ const Profile = () => {
             })
             .catch(error => console.log(error))
     }, [])
-
-    console.log("nome do usuário", user.name)
 
     return(
         <TemplaDefault title={"Meu perfil"}>

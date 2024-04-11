@@ -1,41 +1,17 @@
-import TemplaDefault from "@/templates/Default"
-import { Button, FormControl, FormHelperText, Input, InputLabel } from "@mui/material"
-import { makeStyles } from "tss-react/mui"
+import { 
+    Button, 
+    FormControl, 
+    FormHelperText, 
+    Input, 
+    InputLabel 
+} from "@mui/material"
 import { Formik } from "formik"
 import axios from "axios"
 
+import TemplaDefault from "@/templates/Default"
 import { initialValues, validationSchema } from "./formValues"
 import useToasty from "@/context/Toasty"
-
-const useStyles = makeStyles()((theme) => {
-    return{
-        title: {
-            marginBottom: "32px",
-        },
-        form: {
-            display: "flex",
-            flexDirection: "column",
-            rowGap: "16px",
-            width: "60%",
-            [theme.breakpoints.down("sm")]: {
-                width: "90%",
-                margin: "0 auto"
-            }
-        },
-        form__date: {
-            width: "12vw",
-            [theme.breakpoints.down("sm")]: {
-                width: "45vw"
-            }
-        },
-        button: {
-            width: "250px",
-            height: "54px",
-            marginTop: "40px",
-            fontSize: "24px"
-        }
-    }
-})
+import useStyles from "../../../styles/createBookingStyles"
 
 const CreateBooking = () => {
     const { classes } = useStyles()
