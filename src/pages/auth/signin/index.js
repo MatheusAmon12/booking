@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 
 import { 
-    Button,
     Box, 
     Container, 
     FormControl, 
@@ -24,6 +23,7 @@ import { initialValues, validationSchema } from "./formValues"
 import TemplateAuth from "@/templates/Auth"
 import useToasty from "@/context/Toasty"
 import useStyles from "../../../styles/signInStyles"
+import ButtonComponent from "@/components/Button"
 
 const Signin = () => {
     const { classes } = useStyles()
@@ -150,15 +150,13 @@ const Signin = () => {
                                         >
                                             <span>Esqueci minha senha</span>
                                         </Link>
-                                        <Button
-                                            type="submit"
-                                            variant="contained"
+                                        <ButtonComponent
                                             color="primary"
-                                            fullWidth
-                                            className={classes.margin__bottom__16}
-                                        >
-                                            entrar
-                                        </Button>
+                                            text={"entrar"}
+                                            fullWidth={true}
+                                            margin={"0 0 16px"}
+                                        />
+
                                         <span className={classes.margin__bottom__16}>
                                             OU
                                         </span>

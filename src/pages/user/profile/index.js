@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { 
-    Button, 
     FormControl, 
     FormHelperText, 
     IconButton, Input, 
@@ -16,6 +15,7 @@ import { validationSchema } from "./formValues"
 import useToasty from "@/context/Toasty"
 import TemplaDefault from "@/templates/Default"
 import useStyles from "../../../styles/profileStyles"
+import ButtonComponent from "@/components/Button"
 
 const Profile = () => {
     const { classes } = useStyles()
@@ -198,14 +198,12 @@ const Profile = () => {
                                                 
                                         }
 
-                                        <Button 
-                                            type="submit" 
-                                            variant="contained" 
-                                            color="secondary" 
-                                            className={classes.button}
-                                        >
-                                            salvar
-                                        </Button>
+                                        <ButtonComponent
+                                            color="secondary"
+                                            text={"salvar"}
+                                            fullWidth={false}
+                                            margin={"40px 0 0"}
+                                        />
                                     </form>
                                 )
                             }

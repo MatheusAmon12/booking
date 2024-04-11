@@ -1,5 +1,4 @@
 import { 
-    Button, 
     FormControl, 
     FormHelperText, 
     Input, 
@@ -12,6 +11,7 @@ import TemplaDefault from "@/templates/Default"
 import { initialValues, validationSchema } from "./formValues"
 import useToasty from "@/context/Toasty"
 import useStyles from "../../../styles/createBookingStyles"
+import ButtonComponent from "@/components/Button"
 
 const CreateBooking = () => {
     const { classes } = useStyles()
@@ -125,9 +125,12 @@ const CreateBooking = () => {
                                     </FormHelperText>
                                 </FormControl>
 
-                                <Button type="submit" variant="contained" color="secondary" className={classes.button}>
-                                    salvar
-                                </Button>
+                                <ButtonComponent
+                                    color="secondary"
+                                    text={"criar"}
+                                    fullWidth={false}
+                                    margin={"40px 0 0"}
+                                />
                             </form>
                         )
                     }

@@ -2,7 +2,6 @@ import { useState } from "react"
 import axios from "axios"
 
 import { 
-    Button,
     Box, 
     Container, 
     FormControl, 
@@ -24,6 +23,7 @@ import { initialValues, validationSchema } from "./formValues"
 import TemplateAuth from "@/templates/Auth"
 import useToasty from "@/context/Toasty"
 import useStyles from "../../../styles/signUpStyles"
+import ButtonComponent from "@/components/Button"
 
 const Signup = () => {
     const { classes } = useStyles()
@@ -223,15 +223,13 @@ const Signup = () => {
                                         >
                                             <span>Esqueci minha senha</span>
                                         </Link>
-                                        <Button
-                                            type="submit"
-                                            variant="contained"
+                                        <ButtonComponent
                                             color="primary"
-                                            fullWidth
-                                            className={classes.margin__bottom__16}
-                                        >
-                                            registrar
-                                        </Button>
+                                            text={"entrar"}
+                                            fullWidth={true}
+                                            margin={"0 0 16px"}
+                                        />
+
                                         <span className={classes.margin__bottom__16}>
                                             OU
                                         </span>
