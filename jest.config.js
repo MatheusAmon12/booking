@@ -2,7 +2,7 @@
  * For a detailed explanation regarding each configuration property, visit:
  * https://jestjs.io/docs/configuration
  */
-import nextJest from 'next/jest.js'
+const nextJest = require('next/jest')
 
 /** @type {import('jest').Config} */
 const createJestConfig = nextJest({
@@ -234,4 +234,4 @@ const config = {
   // watchman: true,
 };
 
-export default createJestConfig(config);
+module.exports = createJestConfig(config)
