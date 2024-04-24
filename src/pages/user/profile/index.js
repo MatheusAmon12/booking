@@ -11,7 +11,6 @@ import { Formik } from "formik"
 import axios from "axios"
 import { signOut, useSession } from "next-auth/react"
 
-import { validationSchema } from "./formValues"
 import useToasty from "@/context/Toasty"
 import TemplateDefault from "../../../templates/Default"
 import useStyles from "../../../styles/profileStyles"

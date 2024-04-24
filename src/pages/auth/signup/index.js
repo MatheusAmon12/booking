@@ -239,20 +239,6 @@ const Signup = () => {
                                             fullWidth={true}
                                             margin={"0 0 16px"}
                                         />
-
-                                        <span className={classes.margin__bottom__16}>
-                                            OU
-                                        </span>
-                                        <IconButton
-                                            disableRipple
-                                        >
-                                            <img src="/images/google.svg"/>
-                                            <span
-                                                style={{marginLeft: "16px", color: "#02385A"}}
-                                            >
-                                                Entre com o Google
-                                            </span>
-                                        </IconButton>
                                     </form>
                                 )
                             }
