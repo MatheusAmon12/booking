@@ -7,7 +7,7 @@ import {
 import { Formik } from "formik"
 import axios from "axios"
 
-import TemplaDefault from "@/templates/Default"
+import TemplateDefault from "../../../templates/Default"
 import { initialValues, validationSchema } from "./formValues"
 import useToasty from "@/context/Toasty"
 import useStyles from "../../../styles/createBookingStyles"
@@ -50,7 +50,7 @@ const CreateBooking = () => {
     }
 
     return(
-        <TemplaDefault title={"Criar reserva"}>
+        <TemplateDefault title={"Criar reserva"}>
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
@@ -136,7 +136,7 @@ const CreateBooking = () => {
                     }
                 }
             </Formik>
-        </TemplaDefault>
+        </TemplateDefault>
     )
 }
 

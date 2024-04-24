@@ -1,4 +1,4 @@
-import Toasty from "@/components/Toasty"
+import Toasty from "../components/Toasty"
 import { createContext, useContext, useState } from "react"
 
 const ToastyContext = createContext({})

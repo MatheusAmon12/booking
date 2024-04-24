@@ -28,6 +28,10 @@ const useStyles = makeStyles()((theme) => {
           display: "flex",
           gap: "24px",
       },
+      sidebar__userName: {
+        width: "150px",
+        overflow: "hidden",
+      },
       sidebar__logout: {
           position: "fixed",
           bottom: "80px",
@@ -52,6 +56,7 @@ const useStyles = makeStyles()((theme) => {
       link__decoration: {
           textDecoration: "none"
       },
+
     }
   })
 

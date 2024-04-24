@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 
-import TemplaDefault from "@/templates/Default"
+import TemplateDefault from "../templates/Default"
 import useStyles from "../styles/indexStyles"
 
 const Home = () => {
@@ -21,7 +21,7 @@ const Home = () => {
   }, [])
 
   return(
-    <TemplaDefault title={"Lista de reservas"}>
+    <TemplateDefault title={"Lista de reservas"}>
       <div style={{overflowX: "auto"}}>
         <table className={classes.main__table}>
           <thead>
@@ -62,7 +62,7 @@ const Home = () => {
           </tbody>
         </table>
       </div>
-    </TemplaDefault>
+    </TemplateDefault>
   )
 }
 

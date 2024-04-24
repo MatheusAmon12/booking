@@ -20,10 +20,10 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 
 import { initialValues, validationSchema } from "./formValues"
-import TemplateAuth from "@/templates/Auth"
-import useToasty from "@/context/Toasty"
+import TemplateAuth from "../../../templates/Auth"
+import useToasty from "../../../context/Toasty"
 import useStyles from "../../../styles/signUpStyles"
-import ButtonComponent from "@/components/Button"
+import ButtonComponent from "../../../components/Button"
 
 const Signup = () => {
     const { classes } = useStyles()
@@ -110,8 +110,11 @@ const Signup = () => {
                                                 Nome
                                             </InputLabel>
                                             <Input
+                                                aria-label="Nome"
+                                                role="name"
                                                 name="name"
                                                 value={values.name}
+                                                type="text"
                                                 onChange={handleChange}
                                                 endAdornment={
                                                     <InputAdornment position="end">
@@ -134,8 +137,11 @@ const Signup = () => {
                                                 E-mail
                                             </InputLabel>
                                             <Input
+                                                aria-label="E-mail"
+                                                role="email"
                                                 name="email"
                                                 value={values.email}
+                                                type="text"
                                                 onChange={handleChange}
                                                 endAdornment={
                                                     <InputAdornment position="end">
@@ -158,6 +164,8 @@ const Signup = () => {
                                                 Senha
                                             </InputLabel>
                                             <Input
+                                                aria-label="Senha"
+                                                role="password"
                                                 name="password"
                                                 value={values.password}
                                                 type={ showPassword ? "text" : "password" }
@@ -192,6 +200,8 @@ const Signup = () => {
                                                 Confirmar senha
                                             </InputLabel>
                                             <Input
+                                                aria-label="Confirmar senha"
+                                                role="passwordConfirm"
                                                 name="passwordConfirm"
                                                 value={values.passwordConfirm}
                                                 type={ showPasswordConfirm ? "text" : "password" }
@@ -225,7 +235,7 @@ const Signup = () => {
                                         </Link>
                                         <ButtonComponent
                                             color="primary"
-                                            text={"entrar"}
+                                            text={"cadastrar"}
                                             fullWidth={true}
                                             margin={"0 0 16px"}
                                         />

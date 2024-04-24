@@ -13,7 +13,7 @@ import { signOut, useSession } from "next-auth/react"
 
 import { validationSchema } from "./formValues"
 import useToasty from "@/context/Toasty"
-import TemplaDefault from "@/templates/Default"
+import TemplateDefault from "../../../templates/Default"
 import useStyles from "../../../styles/profileStyles"
 import ButtonComponent from "@/components/Button"
 
@@ -83,7 +83,7 @@ const Profile = () => {
     }, [])
 
     return(
-        <TemplaDefault title={"Meu perfil"}>
+        <TemplateDefault title={"Meu perfil"}>
             {
                 userLoaded ? (
                     <Formik
@@ -212,7 +212,7 @@ const Profile = () => {
                 )
                 : (<Typography>Carregando...</Typography>)
             }
-        </TemplaDefault>
+        </TemplateDefault>
     )
 }
 

@@ -4,14 +4,13 @@ import { signOut, useSession } from "next-auth/react"
 import Link from "next/link"
 import { useState } from "react"
 
-import TopBar from "@/components/AppBar"
+import TopBar from "../components/AppBar"
 import useStyles from "../styles/templateDefaultStyles"
 
-const TemplaDefault = ({ children, title }) => {
+const TemplateDefault = ({ children, title }) => {
     const { classes } = useStyles()
     const [openMenu, setOpenMenu] = useState(false)
     const {data: session} = useSession()
-    console.log(session.user.name)
 
     const handleClickMenu = () => {
         setOpenMenu(!openMenu)
@@ -21,6 +20,8 @@ const TemplaDefault = ({ children, title }) => {
             callbackUrl: "/auth/signin"
         })
     }
+
+    const userName = session?.user?.name || "Username"
 
     return(
         <>  
@@ -82,12 +83,13 @@ const TemplaDefault = ({ children, title }) => {
                         color={"#FFF"}
                         component={"h6"}
                         variant="h6"
+                        className={classes.sidebar__userName}
                     >
                         {
-                            session.user.name
+                            userName
                         }
                     </Typography>
-                    <IconButton onClick={handleLogOut}>
+                    <IconButton onClick={handleLogOut} role="signOutButton">
                         <Logout color="#FFFFFF" />
                     </IconButton>
                 </div>
@@ -108,4 +110,4 @@ const TemplaDefault = ({ children, title }) => {
     )
 }
 
-export default TemplaDefault
+export default TemplateDefault

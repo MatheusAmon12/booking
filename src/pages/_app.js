@@ -5,7 +5,7 @@ import { SessionProvider } from 'next-auth/react'
 
 import createEmotionCache from '../../createEmotionCache'
 import theme from '../theme'
-import { ToastyProvider } from '@/context/Toasty'
+import { ToastyProvider } from '../context/Toasty'
 import CheckAuth from '@/components/CheckAuth'
  
 export default function MyApp({ Component, pageProps }) {
