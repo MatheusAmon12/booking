@@ -3,11 +3,11 @@
 ## Sobre o projeto
 
 Este projeto trata-se do Front-End desenvolvido para consumir a API desenvolvida no Back-End. Acesse aqui: [https://github.com/MatheusAmon12/booking-api](https://github.com/MatheusAmon12/booking-api). Foram utilizadas as seguintes ferramentas e tecnologias:
-    -   [NextJS](https://nextjs.org)
-    -   [Material UI](https://mui.com/material-ui/)
-    -   [NextAuth](https://next-auth.js.org)
-    -   [Google Cloud Platform](https://cloud.google.com/?hl=pt-BR)
-    -   [ReactJS](https://react.dev)
+-   [NextJS](https://nextjs.org)
+-   [Material UI](https://mui.com/material-ui/)
+-   [NextAuth](https://next-auth.js.org)
+-   [Google Cloud Platform](https://cloud.google.com/?hl=pt-BR)
+-   [ReactJS](https://react.dev)
     
 O seu `package.json` deve estar parecido com isto:
 ```json
