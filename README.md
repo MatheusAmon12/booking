@@ -2,7 +2,49 @@
 
 ## Sobre o projeto
 
-Este projeto trata-se do Front-End desenvolvido para consumir a API desenvolvida no Back-End. Acesse aqui: [https://github.com/MatheusAmon12/booking-api](https://github.com/MatheusAmon12/booking-api)
+Este projeto trata-se do Front-End desenvolvido para consumir a API desenvolvida no Back-End. Acesse aqui: [https://github.com/MatheusAmon12/booking-api](https://github.com/MatheusAmon12/booking-api). Foram utilizadas as seguintes ferramentas e tecnologias:
+    -   [NextJS](https://nextjs.org)
+    -   [Material UI](https://mui.com/material-ui/)
+    -   [NextAuth](https://next-auth.js.org)
+    -   [Google Cloud Platform](https://cloud.google.com/?hl=pt-BR)
+    -   [ReactJS](https://react.dev)
+    
+O seu `package.json` deve estar parecido com isto:
+```json
+"dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mswjs/interceptors": "^0.27.2",
+    "@mui/icons-material": "^5.15.14",
+    "@mui/material": "^5.15.14",
+    "axios": "^1.6.8",
+    "formik": "^2.4.5",
+    "next": "14.1.4",
+    "next-auth": "^4.24.7",
+    "next-router-mock": "^0.9.13",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-router-dom": "^6.22.3",
+    "tss-react": "^4.9.6",
+    "yup": "^1.4.0"
+  },
+"devDependencies": {
+"@babel/preset-env": "^7.24.4",
+"@babel/preset-react": "^7.24.1",
+"@swc/core": "^1.4.13",
+"@swc/jest": "^0.2.36",
+"@testing-library/jest-dom": "^6.4.2",
+"@testing-library/react": "^15.0.2",
+"@testing-library/user-event": "^14.5.2",
+"axios-mock-adapter": "^1.22.0",
+"babel-jest": "^29.7.0",
+"jest": "^29.7.0",
+"jest-environment-jsdom": "^29.7.0",
+"node-fetch": "^3.3.2",
+"react-test-renderer": "^18.2.0"
+}
+```
+
 
 ## Setup inicial:
 
