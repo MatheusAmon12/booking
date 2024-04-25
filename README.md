@@ -68,8 +68,6 @@ O seu `package.json` deve estar parecido com isto:
 - Configure um arquivo `.env.local` contendo as seguintes variáveis com os valores que você recebeu no passo anterior:
     -   `GOOGLE_CLIENT_SECRET`
     -   `GOOGLE_CLIENT_ID`
-    -   `BASE_URL`
-        -   Adicione aqui o endpoint do projeto Back-End: `http://localhost:<insira a porta do projeto back-end>/api/`
 - Inicialize o servidor Back-End conforme a documentação
 - Rode `npm run dev`
 - Finalizado!
@@ -88,7 +86,7 @@ O seu `package.json` deve estar parecido com isto:
     - `./src/styles` contém todos os estilos necessários
     - `./src/templates` contém os templates `<TemplateDefault>` e `<TemplateAuth>`
     - `./src/test` contém o arquivo `setup.js` que é executado globalmente ao rodar o script `npm test`
-    - `./src/utils` contém as definições e validações dos formulários presentes no projeto
+    - `./src/utils` contém as definições e validações dos formulários presentes no projeto e o arquivo que define a URL base para as requisições ao Back-End
     - `./src/theme.js` define configurações do tema utilizado com o [Material UI](https://mui.com/material-ui/)
 
 ## Como me localizar no projeto?
