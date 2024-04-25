@@ -31,7 +31,7 @@ const Signup = () => {
     const { setToasty } = useToasty()
 
     const api = axios.create({
-        baseURL: "http://localhost:3333/api/"
+        baseURL: process.env.BASE_URL
     })
 
     const [showPassword, setShowPassword] = useState(false)

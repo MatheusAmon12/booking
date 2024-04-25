@@ -18,7 +18,7 @@ const CreateBooking = () => {
     const { setToasty } = useToasty()
 
     const api = axios.create({
-        baseURL: "http://localhost:3333/api/"
+        baseURL: process.env.BASE_URL
     })
     
     const handleFormSubmit = async (values) => {

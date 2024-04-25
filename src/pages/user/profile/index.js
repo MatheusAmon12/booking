@@ -28,7 +28,7 @@ const Profile = () => {
     const { data: session } = useSession()
 
     const api = axios.create({
-        baseURL: "http://localhost:3333/api/"
+        baseURL: process.env.BASE_URL
     })
     const userEmail = session.user.email
 
