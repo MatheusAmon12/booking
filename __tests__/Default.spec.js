@@ -1,5 +1,5 @@
 import { fireEvent, render, waitFor } from "@testing-library/react"
-import TemplateDefault from "./Default"
+import TemplateDefault from "../src/templates/Default"
 import { useSession, signOut } from "next-auth/react"
 
 jest.mock('next-auth/react', () => {

@@ -1,6 +1,6 @@
 import { render, waitFor } from "@testing-library/react"
 import MockAdapter from 'axios-mock-adapter'
-import Home from "./index"
+import Home from "../src/pages/index"
 import axios from "axios"
 import { useSession } from "next-auth/react"
 

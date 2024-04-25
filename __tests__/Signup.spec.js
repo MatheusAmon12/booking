@@ -1,7 +1,7 @@
 import mockRouter from 'next-router-mock'
 import { fireEvent, render, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import Signup from '.'
+import Signup from '../src/pages/auth/signup'
 import { Formik } from 'formik'
 
 jest.mock('next/router', () => jest.requireActual('next-router-mock'))
