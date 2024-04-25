@@ -1,4 +1,4 @@
-# Bookings
+# Dreamscape Bookings
 
 ## Sobre o projeto
 
@@ -29,19 +29,19 @@ O seu `package.json` deve estar parecido com isto:
     "yup": "^1.4.0"
   },
 "devDependencies": {
-"@babel/preset-env": "^7.24.4",
-"@babel/preset-react": "^7.24.1",
-"@swc/core": "^1.4.13",
-"@swc/jest": "^0.2.36",
-"@testing-library/jest-dom": "^6.4.2",
-"@testing-library/react": "^15.0.2",
-"@testing-library/user-event": "^14.5.2",
-"axios-mock-adapter": "^1.22.0",
-"babel-jest": "^29.7.0",
-"jest": "^29.7.0",
-"jest-environment-jsdom": "^29.7.0",
-"node-fetch": "^3.3.2",
-"react-test-renderer": "^18.2.0"
+    "@babel/preset-env": "^7.24.4",
+    "@babel/preset-react": "^7.24.1",
+    "@swc/core": "^1.4.13",
+    "@swc/jest": "^0.2.36",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^15.0.2",
+    "@testing-library/user-event": "^14.5.2",
+    "axios-mock-adapter": "^1.22.0",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "node-fetch": "^3.3.2",
+    "react-test-renderer": "^18.2.0"
 }
 ```
 
