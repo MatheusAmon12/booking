@@ -16,7 +16,7 @@ const options = {
             },
             async authorize(credentials) {
                 try{
-                    const { data } = await axios.post("http://localhost:3333/api/auth/login", {
+                    const { data } = await axios.post(`${process.env.BASE_URL}/auth/login`, {
                         email: credentials.email,
                         password: credentials.password
                     })
