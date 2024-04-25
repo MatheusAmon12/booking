@@ -19,7 +19,7 @@ import Link from "next/link"
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/router"
 
-import { initialValues, validationSchema } from "./formValues"
+import { initialValues, validationSchema } from "../../../utils/formValuesSignin"
 import TemplateAuth from "@/templates/Auth"
 import useToasty from "@/context/Toasty"
 import useStyles from "../../../styles/signInStyles"

@@ -8,7 +8,7 @@ import { Formik } from "formik"
 import axios from "axios"
 
 import TemplateDefault from "../../../templates/Default"
-import { initialValues, validationSchema } from "./formValues"
+import { initialValues, validationSchema } from "../../../utils/formValuesBooking"
 import useToasty from "@/context/Toasty"
 import useStyles from "../../../styles/createBookingStyles"
 import ButtonComponent from "@/components/Button"

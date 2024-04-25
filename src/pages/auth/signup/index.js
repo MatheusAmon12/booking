@@ -19,7 +19,7 @@ import { Formik } from "formik"
 import Link from "next/link"
 import { useRouter } from "next/router"
 
-import { initialValues, validationSchema } from "./formValues"
+import { initialValues, validationSchema } from "../../../utils/formValuesSignup"
 import TemplateAuth from "../../../templates/Auth"
 import useToasty from "../../../context/Toasty"
 import useStyles from "../../../styles/signUpStyles"
