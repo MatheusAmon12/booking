@@ -1,4 +1,4 @@
-import axios from "axios"
+import { baseURL } from "@/utils/axiosBaseUrl"
 import NextAuth from "next-auth/next"
 import CredentialsProvider from "next-auth/providers/credentials"
 import GoogleProvider from "next-auth/providers/google"
@@ -16,7 +16,8 @@ const options = {
             },
             async authorize(credentials) {
                 try{
-                    const { data } = await axios.post(`${process.env.BASE_URL}/auth/login`, {
+                    const api = baseURL()
+                    const { data } = await api.post("/auth/login", {
                         email: credentials.email,
                         password: credentials.password
                     })

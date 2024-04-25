@@ -12,14 +12,13 @@ import { initialValues, validationSchema } from "../../../utils/formValuesBookin
 import useToasty from "@/context/Toasty"
 import useStyles from "../../../styles/createBookingStyles"
 import ButtonComponent from "@/components/Button"
+import { baseURL } from "@/utils/axiosBaseUrl"
 
 const CreateBooking = () => {
     const { classes } = useStyles()
     const { setToasty } = useToasty()
 
-    const api = axios.create({
-        baseURL: process.env.BASE_URL
-    })
+    const api = baseURL()
     
     const handleFormSubmit = async (values) => {
         try{

@@ -1,5 +1,4 @@
 import { useState } from "react"
-import axios from "axios"
 
 import { 
     Box, 
@@ -24,15 +23,14 @@ import TemplateAuth from "../../../templates/Auth"
 import useToasty from "../../../context/Toasty"
 import useStyles from "../../../styles/signUpStyles"
 import ButtonComponent from "../../../components/Button"
+import { baseURL } from "@/utils/axiosBaseUrl"
 
 const Signup = () => {
     const { classes } = useStyles()
     const router = useRouter()
     const { setToasty } = useToasty()
 
-    const api = axios.create({
-        baseURL: process.env.BASE_URL
-    })
+    const api = baseURL()
 
     const [showPassword, setShowPassword] = useState(false)
     const [showPasswordConfirm, setShowPasswordConfirm] = useState(false)

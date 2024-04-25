@@ -15,6 +15,7 @@ import useToasty from "@/context/Toasty"
 import TemplateDefault from "../../../templates/Default"
 import useStyles from "../../../styles/profileStyles"
 import ButtonComponent from "@/components/Button"
+import { baseURL } from "@/utils/axiosBaseUrl"
 
 const Profile = () => {
     const { classes } = useStyles()
@@ -27,9 +28,7 @@ const Profile = () => {
     const { setToasty } = useToasty()
     const { data: session } = useSession()
 
-    const api = axios.create({
-        baseURL: process.env.BASE_URL
-    })
+    const api = baseURL()
     const userEmail = session.user.email
 
     const handleDisabled = (field) => {

@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react"
-import axios from "axios"
 
 import TemplateDefault from "../templates/Default"
 import useStyles from "../styles/indexStyles"
+import { baseURL } from "@/utils/axiosBaseUrl"
 
 const Home = () => {
   const { classes } = useStyles()
   const [bookings, setBookings] = useState([])
 
-  const api = axios.create({
-    baseURL: process.env.BASE_URL
-  })
+  const api = baseURL()
 
   useEffect(() => {
     api.get("/bookings")
