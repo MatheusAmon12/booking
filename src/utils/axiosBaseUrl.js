@@ -1,5 +1,7 @@
 import axios from "axios";
 
 export const baseURL = () => axios.create({
-    baseURL: "http://localhost:3333/api/"
+    // utilizar esta abordagem apenas para desenvolvimento
+    //baseURL: "http://localhost:10000/api/",
+    baseURL: "https://booking-api-sdsh.onrender.com/api/",
 })
