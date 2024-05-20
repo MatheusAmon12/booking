@@ -95,4 +95,15 @@ O seu `package.json` deve estar parecido com isto:
 
 ## Observações
 
-É imprescindível a clonagem do repositório [Back-End](https://github.com/MatheusAmon12/booking-api/), pois esse projeto consome a API que lá está desenvolvida. Na documentação encontrará tudo que será necessário para que ambos projetos se comuniquem de forma correta. Atente-se aos detalhes de configurações de portas, variáveis de ambiente e a inserção correta de dados do Google Cloud Platform (GCP)
+- É imprescindível a clonagem do repositório [Back-End](https://github.com/MatheusAmon12/booking-api/), pois esse projeto consome a API que lá está desenvolvida. Na documentação encontrará tudo que será necessário para que ambos projetos se comuniquem de forma correta. Atente-se aos detalhes de configurações de portas, variáveis de ambiente e a inserção correta de dados do Google Cloud Platform (GCP)
+- Ajuste a URL base para as requisições ao Back-End no arquivo `utils/axiosBaseUrl.js`:
+
+    ```js
+    import axios from "axios";
+
+    export const baseURL = () => axios.create({
+        // utilizar esta abordagem apenas para desenvolvimento
+        //baseURL: "http://localhost:10000/api/",
+        baseURL: "https://booking-api-sdsh.onrender.com/api/",
+    });
+    ```
