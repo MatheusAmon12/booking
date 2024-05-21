@@ -4,7 +4,7 @@ import { useRouter } from "next/router"
 
 import BackdropLoading from "./Backdrop"
 
-const CheckAuth = ({ Component, pageProps }) => {
+const  CheckAuth = ({ Component, pageProps }) => {
     const { data: session, status } = useSession()
     const router = useRouter()
 

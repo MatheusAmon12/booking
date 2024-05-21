@@ -16,6 +16,7 @@ import TemplateDefault from "../../../templates/Default"
 import useStyles from "../../../styles/profileStyles"
 import ButtonComponent from "@/components/Button"
 import { baseURL } from "@/utils/axiosBaseUrl"
+import { validationSchema } from "@/utils/formValuesProfile"
 
 const Profile = () => {
     const { classes } = useStyles()
