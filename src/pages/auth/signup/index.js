@@ -58,7 +58,7 @@ const Signup = () => {
                 })
             }
 
-            router.push("/auth/signin")
+            router.push(`${process.env.NEXT_PUBLIC_SITE_URL}/auth/signin`)
         } catch(error){
             if(error.response.status === 400){
                 setToasty({
