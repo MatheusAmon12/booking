@@ -5,7 +5,7 @@ import GoogleProvider from "next-auth/providers/google"
 
 const options = {
     pages: {
-        error: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/signin?i=1`
+        error: `${process.env.NEXTAUTH_URL}/auth/signin?i=1`
     },
     providers: [
         CredentialsProvider({
