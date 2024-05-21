@@ -51,6 +51,8 @@ const Signin = () => {
             callbackUrl: process.env.NEXT_PUBLIC_SITE_URL,
         })
             .then(res => console.log(res))
+        
+        console.log(process.env.NEXT_PUBLIC_SITE_URL)
     }
     const handleClickGoogle = async () => {
         await signIn('google', {
