@@ -3,26 +3,30 @@ import { useEffect, useState } from "react"
 import TemplateDefault from "../templates/Default"
 import useStyles from "../styles/indexStyles"
 import { baseURL } from "@/utils/axiosBaseUrl"
+import { useSession } from "next-auth/react"
 
 const Home = () => {
   const { classes } = useStyles()
   const [bookings, setBookings] = useState([])
+  const { data: session } = useSession()
 
   const api = baseURL()
 
   useEffect(() => {
-    const cachedBookings = localStorage.getItem("bookings")
-    if (cachedBookings) {
-      setBookings(JSON.parse(cachedBookings))
-    } else {
-      api.get("/bookings")
-        .then(response => {
-          setBookings(response.data.bookings)
-          localStorage.setItem("bookings", JSON.stringify(response.data.bookings))
-        })
-        .catch(error => console.log("Error na listagem:", error))
+    if(session) {
+      const cachedBookings = localStorage.getItem("bookings")
+      if (cachedBookings) {
+        setBookings(JSON.parse(cachedBookings))
+      } else {
+        api.get("/bookings")
+          .then(response => {
+            setBookings(response.data.bookings)
+            localStorage.setItem("bookings", JSON.stringify(response.data.bookings))
+          })
+          .catch(error => console.log("Error na listagem:", error))
+      }
     }
-  }, [])
+  }, [session])
 
   return(
     <TemplateDefault title={"Lista de reservas"}>
