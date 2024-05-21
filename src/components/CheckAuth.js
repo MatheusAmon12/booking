@@ -11,7 +11,7 @@ const  CheckAuth = ({ Component, pageProps }) => {
     useEffect(() => {
         if(status === "loading") return
         if(!session || status === "unauthenticated"){
-            router.push(`${process.env.NEXT_PUBLIC_SITE_URL}/auth/signin`)
+            router.push(`/auth/signin`)
         }
     }, [session, status])
 
