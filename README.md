@@ -1,5 +1,7 @@
 # Dreamscape Bookings
 
+![Dreamscape](/public/dreamscape-preview.gif)
+
 ## Sobre o projeto
 
 Este projeto trata-se do Front-End desenvolvido para consumir a API desenvolvida no Back-End. Acesse aqui: [https://github.com/MatheusAmon12/booking-api](https://github.com/MatheusAmon12/booking-api). Foram utilizadas as seguintes ferramentas e tecnologias:
