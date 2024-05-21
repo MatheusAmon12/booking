@@ -48,13 +48,13 @@ const Signin = () => {
         await signIn('credentials', {
             email: values.email,
             password: values.password,
-            callbackUrl: `${process.env.NEXT_PUBLIC_SITE_URL}`,
+            callbackUrl: process.env.NEXT_PUBLIC_SITE_URL,
         })
             .then(res => console.log(res))
     }
     const handleClickGoogle = async () => {
         await signIn('google', {
-            callbackUrl: `${process.env.NEXT_PUBLIC_SITE_URL}`,
+            callbackUrl: process.env.NEXT_PUBLIC_SITE_URL,
         })
     }
 
