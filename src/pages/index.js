@@ -11,11 +11,17 @@ const Home = () => {
   const api = baseURL()
 
   useEffect(() => {
-    api.get("/bookings")
-      .then(response => {
-        setBookings(response.data.bookings)
-      })
-      .catch(error => console.log("Error na listagem:", error))
+    const cachedBookings = localStorage.getItem("bookings")
+    if (cachedBookings) {
+      setBookings(JSON.parse(cachedBookings))
+    } else {
+      api.get("/bookings")
+        .then(response => {
+          setBookings(response.data.bookings)
+          localStorage.setItem("bookings", JSON.stringify(response.data.bookings))
+        })
+        .catch(error => console.log("Error na listagem:", error))
+    }
   }, [])
 
   return(
