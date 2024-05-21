@@ -56,6 +56,7 @@ const Signin = () => {
         await signIn('google', {
             callbackUrl: process.env.NEXT_PUBLIC_SITE_URL,
         })
+        console.log(process.env.NEXT_PUBLIC_SITE_URL)
     }
 
     return(
