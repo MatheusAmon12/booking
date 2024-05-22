@@ -58,7 +58,7 @@ const Profile = () => {
             })
 
             await signOut({
-                callbackUrl: `${process.env.NEXTAUTH_URL}/auth/signin`
+                callbackUrl: `/auth/signin`
             })
         } catch(error){
             setToasty({
