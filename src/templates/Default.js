@@ -17,7 +17,7 @@ const TemplateDefault = ({ children, title }) => {
     }
     const handleLogOut = async () => {
         await signOut({
-            callbackUrl: `${process.env.NEXTAUTH_URL}/auth/signin`
+            callbackUrl: `/auth/signin`
         })
     }
 

@@ -48,15 +48,13 @@ const Signin = () => {
         await signIn('credentials', {
             email: values.email,
             password: values.password,
-            callbackUrl: process.env.NEXTAUTH_URL,
+            callbackUrl: "/",
         })
             .then(res => console.log(res))
-        
-        console.log(process.env.NEXTAUTH_URL)
     }
     const handleClickGoogle = async () => {
         await signIn('google', {
-            callbackUrl: process.env.NEXTAUTH_URL,
+            callbackUrl: "/",
         })
     }
 
