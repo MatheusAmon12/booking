@@ -70,6 +70,10 @@ O seu `package.json` deve estar parecido com isto:
 - Configure um arquivo `.env.local` contendo as seguintes variáveis com os valores que você recebeu no passo anterior:
     -   `GOOGLE_CLIENT_SECRET`
     -   `GOOGLE_CLIENT_ID`
+    -   `NEXTAUTH_SECRET`
+    -   `NEXTAUTH_URL`
+    -   `NEXT_PUBLIC_API_URL`
+        - obs.: deve ser `http://localhost:10000/api` em ambiente de desenvolvimento, para isso tenha também o back-end rodando localmente
 - Inicialize o servidor Back-End conforme a documentação
 - Rode `npm run dev`
 - Finalizado!
@@ -98,14 +102,6 @@ O seu `package.json` deve estar parecido com isto:
 ## Observações
 
 - É imprescindível a clonagem do repositório [Back-End](https://github.com/MatheusAmon12/booking-api/), pois esse projeto consome a API que lá está desenvolvida. Na documentação encontrará tudo que será necessário para que ambos projetos se comuniquem de forma correta. Atente-se aos detalhes de configurações de portas, variáveis de ambiente e a inserção correta de dados do Google Cloud Platform (GCP)
-- Ajuste a URL base para as requisições ao Back-End no arquivo `utils/axiosBaseUrl.js`:
-
-    ```js
-    import axios from "axios";
-
-    export const baseURL = () => axios.create({
-        // utilizar esta abordagem apenas para desenvolvimento
-        //baseURL: "http://localhost:10000/api/",
-        baseURL: "https://booking-api-sdsh.onrender.com/api/",
-    });
-    ```
+- O projeto está preparado para deploy, atente-se aos seguintes pontos:
+    - Se optar por deploy na Vercel não é necessário definir a variável de ambiente `NEXTAUTH_URL`, a plataforma lida automaticamente com isso.
+    - Além da Vercel recomendo o Render, nesse caso será necessário definir a variável de ambiente `NEXTAUTH_URL` com a URL do Render. Então faça o deploy e depois adicione a URL do Render ao seu projeto por meio do painel de configuração.
